@@ -13,7 +13,7 @@ export default defineConfig({
   },
 
   fullyParallel: false,
-  workers: 5,
+  workers: 2,
   reporter: [
         ['line'],
         ['allure-playwright']
