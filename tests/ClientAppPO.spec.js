@@ -6,6 +6,7 @@ const dataFromJson = JSON.parse(JSON.stringify(require('../utils/ClienPOTestdata
 for(const data of testdataJasonArr)
 {
 test("AddProductToCart' " +data.desiredProduct+ " '", async ({ page }) => {
+         
          // const context = await browser.newContext();
          // const page = await context.newPage();
          const pageObjManager = new PageObjManager(page);
