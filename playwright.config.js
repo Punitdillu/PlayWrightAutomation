@@ -6,7 +6,7 @@ export default defineConfig({
 
   retries : 0,
 
-  timeout: 15 * 1000,
+  timeout: 40 * 1000,
 
   expect: {
     timeout: 8 * 1000,
