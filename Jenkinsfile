@@ -80,7 +80,8 @@ ${env.BUILD_URL}
 Regards,
 Jenkins Automation
 """,
-                to: 'punitrajranjan5@gmail.com'
+                to: 'punitrajranjan5@gmail.com',
+                attachmentsPattern: 'allure-report.zip'
             )
         }
 
