@@ -28,6 +28,18 @@ pipeline {
             }
         }
 
+        stage('Generate Allure Report') {
+            steps {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'allure-results']]
+                ])
+            }
+        }
+
     }
 
     post {
@@ -46,6 +58,29 @@ pipeline {
             archiveArtifacts(
                 artifacts: 'test-results/**/*',
                 allowEmptyArchive: true
+            )
+
+            // Send Email
+            emailext(
+                subject: "Playwright Automation - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                body: """
+Hello,
+
+Playwright automation execution has completed.
+
+Build Number: ${env.BUILD_NUMBER}
+Build Status: ${currentBuild.currentResult}
+
+Allure Report:
+${env.BUILD_URL}allure/
+
+Jenkins Build:
+${env.BUILD_URL}
+
+Regards,
+Jenkins Automation
+""",
+                to: 'punitrajranjan5@gmail.com'
             )
         }
 
