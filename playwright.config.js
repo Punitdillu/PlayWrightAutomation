@@ -14,13 +14,13 @@ export default defineConfig({
 
   fullyParallel: false,
   workers: 2,
-  reporter: [
-        ['line'],
-        ['allure-playwright']
-    ],
+  // reporter: [
+  //       ['line'],
+  //       ['allure-playwright']
+  //   ],
   
 
-  //reporter: 'html',
+  reporter: 'html',
 
   use: {
     browserName: 'chromium',

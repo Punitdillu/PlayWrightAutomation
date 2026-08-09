@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test')
 
-test("ElementIsHiddenOrVisible", async ({ browser }) => {
-         const context = await browser.newContext();
-         const page = await context.newPage();
+test("ElementIsHiddenOrVisible", async ({ page }) => {
+         // const context = await browser.newContext();
+         // const page = await context.newPage();
 
          await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
@@ -25,10 +25,10 @@ test("ElementIsHiddenOrVisible", async ({ browser }) => {
 
 });
 
-test("Take Screenshor and visusal Validation", async ({ browser }) => {
+test("Take Screenshor and visusal Validation", async ({ page }) => {
 
-         const context = await browser.newContext();
-         const page = await context.newPage();
+         // const context = await browser.newContext();
+         // const page = await context.newPage();
          const currentTime = new Date()
                   .toLocaleTimeString('en-GB', { hour12: false })
                   .replace(/:/g, '-');
@@ -45,10 +45,10 @@ test("Take Screenshor and visusal Validation", async ({ browser }) => {
 
 });
 
-test("Visual Comparison Testing", async({browser})=>
+test("Visual Comparison Testing", async({page})=>
 {
-         const newcontext = await browser.newContext();
-         const page = await newcontext.newPage();
+         // const newcontext = await browser.newContext();
+         // const page = await newcontext.newPage();
          await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
          //await page.goto("https://www.indianrail.gov.in/enquiry/StaticPages/StaticEnquiry.jsp?StaticPage=index.html");
          expect(await page.screenshot()).toMatchSnapshot("langing.png");

@@ -8,10 +8,10 @@ const {test, expect} = require('@playwright/test'); // importing test package fr
 
 
 
-test("LoginTestCase",async ({browser})=>
+test("LoginTestCase",async ({page})=>
 {
-         const context= await browser.newContext();
-         const page = await context.newPage();
+         // const context= await browser.newContext();
+         // const page = await context.newPage();
          const UserName = page.locator("#userEmail");
          const Password = page.locator("#userPassword");
          const LoginBtn = page.locator("#login");
@@ -30,15 +30,15 @@ test("LoginTestCase",async ({browser})=>
          // await expect(FirstProduct).toContainText("ADIDAS ORIGINAL");
          await AllProductAtPage.last().waitFor();
          console.log(await AllProductAtPage.allTextContents());
-         await browser.close();
+         
          
 });
 
-test("AddProductToCart",async ({browser})=>
+test("AddProductToCart",async ({page})=>
 {
          const desiredProduct = "ZARA COAT 3";
-         const context= await browser.newContext();
-         const page = await context.newPage();
+         // const context= await browser.newContext();
+         // const page = await context.newPage();
          const UserName = page.locator("#userEmail");
          const Password = page.locator("#userPassword");
          const LoginBtn = page.locator("#login");
@@ -132,7 +132,7 @@ test("AddProductToCart",async ({browser})=>
 
                   console.log("Ordered Item is not under Order Page");
          }
-         await browser.close();
+         
         
          
          

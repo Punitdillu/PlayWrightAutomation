@@ -24,13 +24,13 @@ test.beforeEach(() => {
 });
 
 
-test("LoginUsingApiThenAddProductToCart", async ({ browser }) => {
+test("LoginUsingApiThenAddProductToCart", async ({ page }) => {
 
 
          const desiredProduct = "ZARA COAT 3";
 
-         const context = await browser.newContext();
-         const page = await context.newPage();
+         // const context = await browser.newContext();
+         // const page = await context.newPage();
 
          const UserName = page.locator("#userEmail");
          const Password = page.locator("#userPassword");
@@ -55,47 +55,6 @@ test("LoginUsingApiThenAddProductToCart", async ({ browser }) => {
 
          await page.goto("https://rahulshettyacademy.com/client");
 
-         // await UserName.fill("PUNITRANJAN2105@GMAIL.COM");
-         // await Password.fill("Punitranjan1@");
-         // await LoginBtn.click();
-
-         // await AllProductAtPage.last().waitFor();
-         // console.log(await AllProductAtPage.allTextContents());
-         // const count = await AllProductAtPage.count();
-
-         // const product =await AllProductAtPage.allTextContents();
-
-
-         // for(let i=0 ; i< count ; i++)
-         // {
-         //          if(await AllProductAtPage.nth(i).locator("b").textContent()== desiredProduct)
-         //          {
-         //                   await AllProductAtPage.nth(i).locator("text =  Add To Cart").click();
-
-         //                   break;
-         //          }
-
-         // }
-         // // Open Cart
-         // await CartBtn.click();
-         // await checkoutBtn.click();
-
-         // // for field which show auto suggession  we need to use pressSequentially
-         // await SelectCountryField.pressSequentially("India", { delay: 150 });
-
-         // await page.locator("//*[ text()=' India']").click();
-
-         // await CreditCardNumber.first().fill("4111 1111 1111 1111");
-
-         // await Cvv.fill("354");
-         // await NameOnCard.fill("Punit Ranjan");
-         // await PlaceOrderBtn.click();
-
-         // expect(await ConfirmationMsg).toHaveText(" Thankyou for the order. ");
-         // const text = await GetOrderId.textContent();
-         // const result = text.split("|")[1].trim();
-
-         // console.log("result"+result+"result");
 
          // click on ordr tab
          await orderTab.first().click();
@@ -124,7 +83,7 @@ test("LoginUsingApiThenAddProductToCart", async ({ browser }) => {
 
                   console.log("Ordered Item is not under Order Page");
          }
-         await browser.close();
+         
 
 
 

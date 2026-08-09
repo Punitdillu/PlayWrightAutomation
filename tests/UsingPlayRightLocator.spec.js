@@ -32,6 +32,6 @@ test('@Webst Client App login', async ({ page }) => {
    await page.getByText("PLACE ORDER").click();
  
    await expect(page.getByText("Thankyou for the order.")).toBeVisible();
-   await page.close();
+   
 })
 

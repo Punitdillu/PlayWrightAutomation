@@ -6,11 +6,11 @@ const {test, expect} = require('@playwright/test'); // importing test package fr
 // It Is treated as one testcase
 // here browser is a fixture
 
-test("Browser context playwright test",async ({browser})=>
+test("Browser context playwright test",async ({page})=>
 {
          
-         const context = await browser.newContext(); // launch browser with specific details like proxy or cookies
-         const page = await context.newPage();  // it will give the new page
+        //  const context = await browser.newContext(); // launch browser with specific details like proxy or cookies
+        //  const page = await context.newPage();  // it will give the new page
 
          const UserName = page.locator("input[id='username']");
          const Password = page.locator("input[id='password']");
@@ -61,10 +61,8 @@ test("Browser context playwright test",async ({browser})=>
 
          const allProduct = await AllProduct.allTextContents();
          console.log(allProduct);
-         await browser.close();
          
-         
-
+   
 }
 );
 
@@ -78,15 +76,15 @@ test("Page playwright test",async ({page})=>
 
           console.log("Tittle : "+ await page.title()); // to get the tittle of page and print
          await expect(page).toHaveTitle("Google"); // validate the tittle using assertion
-         await browser.close();
+         
 }
 );
 
 
-test("ChildWindow Handling", async({browser})=>
+test("ChildWindow Handling", async({page})=>
 {
-         const context = await browser.newContext();
-         const page = await context.newPage();
+        //  const context = await browser.newContext();
+        //  const page = await context.newPage();
          const UserName = page.locator("input[id='username']");
          const Password = page.locator("input[id='password']");
          const SignBtn = page.locator("#signInBtn");
@@ -121,7 +119,7 @@ test("ChildWindow Handling", async({browser})=>
          console.log(await page.locator("[style*='block']").textContent());      // extracting the text from error popup
 
          await expect(page.locator("[style*='block']")).toContainText("Incorrect"); // Using Assertion to validate the text in Error popup
-         await browser.close();
+         
          
 
 });
