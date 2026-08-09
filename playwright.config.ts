@@ -1,10 +1,9 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-
   testDir: './tests',
 
-  retries : 1,
+  retries: 1,
 
   timeout: 40 * 1000,
 
@@ -13,14 +12,13 @@ export default defineConfig({
   },
 
   fullyParallel: false,
-  workers: 4,
-  reporter: [
-        ['line'],
-        ['allure-playwright']
-    ],
-  
 
-  // reporter: 'html',
+  workers: 4,
+
+  reporter: [
+    ['line'],
+    ['allure-playwright']
+  ],
 
   use: {
     browserName: 'chromium',
@@ -33,9 +31,10 @@ export default defineConfig({
 
     trace: 'on',
 
+    // Uses native screen size when launching maximized
     viewport: null,
 
-    actionTimeout: 10000,
+    actionTimeout: 10 * 1000,
 
     launchOptions: {
       args: [

@@ -1,14 +1,19 @@
-class DashBoardObj {
+import { Locator, Page } from "@playwright/test";
 
-         constructor(page) {
+export class DashBoardObj {
+
+         readonly page: Page;
+         readonly AllProductAtPage: Locator;
+         readonly CartBtn: Locator;
+
+         constructor(page: Page) {
                   this.page = page;
                   this.AllProductAtPage = page.locator(".card-body");
                   this.CartBtn = page.locator("[routerlink*='cart']");
 
          }
 
-         async addProductToCart(text, desiredProduct) 
-         {
+         async addProductToCart(text:string, desiredProduct:string) {
                   await this.AllProductAtPage.last().waitFor();
                   console.log(await this.AllProductAtPage.allTextContents());
                   const count = await this.AllProductAtPage.count();
@@ -30,4 +35,3 @@ class DashBoardObj {
 
 }
 
-module.exports = { DashBoardObj };

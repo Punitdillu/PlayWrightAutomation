@@ -1,7 +1,9 @@
-const { test, expect } = require('@playwright/test'); // importing test package from playwright
-const { PageObjManager } = require('../pageObjects/PageObjManager');
-const testdataJasonArr = JSON.parse(JSON.stringify(require('../utils/ClienPOTestdata.json')));
-const dataFromJson = JSON.parse(JSON.stringify(require('../utils/ClienPOTestdataJson.json')));
+import { test, expect } from '@playwright/test';
+import { PageObjManager } from '../pageObjects/PageObjManager';
+import testdataJasonArr from '../utils/ClienPOTestdata.json';
+import dataFromJson from '../utils/ClienPOTestdataJson.json';
+
+
 
 for(const data of testdataJasonArr)
 {
@@ -15,8 +17,6 @@ test("AddProductToCart' " +data.desiredProduct+ " '", async ({ page }) => {
          const confirmPage = pageObjManager.getConfirmPage();
          const orderpageObj = pageObjManager.getOrderpageObj();
          const loginObj = pageObjManager.getLoginPage();
-
-        
 
          //pageObjManager.landToLoginPage();
 
@@ -63,7 +63,7 @@ test("@WEB AddProductToCart2345", async ({ page }) => {
 
          await cartpageobj.doPaymentAndPlaceOrder(dataFromJson.country, dataFromJson.creditCardNo, dataFromJson.cvv, dataFromJson.cardOwner);
 
-         const result = await confirmPage.validateConfirmationMsgAndGetID();
+         const result:string = await confirmPage.validateConfirmationMsgAndGetID();
 
          await orderpageObj.movetoOrderPageValidateTheOrderPresent(result);
 
