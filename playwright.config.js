@@ -4,7 +4,7 @@ export default defineConfig({
 
   testDir: './tests',
 
-  retries : 0,
+  retries : 1,
 
   timeout: 40 * 1000,
 
@@ -13,7 +13,7 @@ export default defineConfig({
   },
 
   fullyParallel: false,
-  workers: 2,
+  workers: 4,
   reporter: [
         ['line'],
         ['allure-playwright']

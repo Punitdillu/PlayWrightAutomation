@@ -20,7 +20,7 @@ test("Browser context playwright test",async ({page})=>
          const Dropdown = page.locator("[data-style='btn-info']");
          const UserRadiobtn = page.locator("//span[text()=' User']");
          const OkayBtn = page.locator("#okayBtn");
-         const TermCheckbox = page.locator("#terms");
+         const TermCheckbox = page.getByRole('checkbox', { name: 'I Agree to the terms and' });
          const DocumentLink = page.getByText("Free Access to InterviewQues/ResumeAssistance/Material");
          
          await page.goto("https://rahulshettyacademy.com/loginpagePractise/");  // here it navigate to app or url
