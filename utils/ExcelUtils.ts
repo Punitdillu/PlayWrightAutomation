@@ -3,14 +3,16 @@ import ExcelJS from 'exceljs';
 export class ExcelUtils {
 
     // Load workbook
-    async loadWorkbook(filePath: string): Promise<ExcelJS.Workbook> {
+    async loadWorkbook(filePath: string): Promise<ExcelJS.Workbook> 
+    {
         const workbook = new ExcelJS.Workbook();
         await workbook.xlsx.readFile(filePath);
         return workbook;
     }
 
     // Read a single cell
-    async readCell(filePath: string, sheetName: string, row: number, col: number): Promise<ExcelJS.CellValue> {
+    async readCell(filePath: string, sheetName: string, row: number, col: number): Promise<ExcelJS.CellValue> 
+    {
         const workbook = await this.loadWorkbook(filePath);
         const sheet = workbook.getWorksheet(sheetName);
 
@@ -22,7 +24,8 @@ export class ExcelUtils {
     }
 
     // Update a single cell
-    async updateCell(filePath: string, sheetName: string, row: number, col: number, value: ExcelJS.CellValue): Promise<void> {
+    async updateCell(filePath: string, sheetName: string, row: number, col: number, value: ExcelJS.CellValue): Promise<void> 
+    {
         const workbook = await this.loadWorkbook(filePath);
         const sheet = workbook.getWorksheet(sheetName);
 
@@ -35,7 +38,8 @@ export class ExcelUtils {
     }
 
     // Print all data from a sheet
-    async printSheet(filePath: string, sheetName: string): Promise<void> {
+    async printSheet(filePath: string, sheetName: string): Promise<void> 
+    {
         const workbook = await this.loadWorkbook(filePath);
         const sheet = workbook.getWorksheet(sheetName);
 
@@ -51,7 +55,8 @@ export class ExcelUtils {
     }
 
     // Find row by searching a value
-    async findRow(filePath: string, sheetName: string, searchValue: string | number): Promise<number> {
+    async findRow(filePath: string, sheetName: string, searchValue: string | number): Promise<number> 
+    {
         const workbook = await this.loadWorkbook(filePath);
         const sheet = workbook.getWorksheet(sheetName);
 
