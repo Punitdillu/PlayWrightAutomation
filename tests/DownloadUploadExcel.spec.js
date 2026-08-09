@@ -1,11 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { ExcelUtils } = require('../utils/ExcelUtils');
 
-test("Excel Download Update and Upload", async ({ browser }) => {
+test("Excel Download Update and Upload", async ({ page }) => {
          
          const excelUtilsObj = new ExcelUtils();
-         const context = await browser.newContext();
-         const page = await context.newPage();
+         // const context = await browser.newContext();
+         // const page = await context.newPage();
+         
          await page.goto("https://rahulshettyacademy.com/upload-download-test/index.html");
 
 
