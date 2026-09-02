@@ -32,19 +32,9 @@ steps:
     npx playwright install chromium
   displayName: 'Install Playwright Chromium'
 
-- task: ArchiveFiles@2
-  displayName: 'Create framework artifact'
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/PlaywrightAutomation.zip'
-    replaceExistingArchive: true
-    verbose: true
-
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Playwright framework artifact'
+  displayName: 'Publish Playwright framework'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/PlaywrightAutomation.zip'
+    PathtoPublish: '$(Build.SourcesDirectory)'
     ArtifactName: 'playwright-framework'
     publishLocation: 'Container'
