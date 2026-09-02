@@ -17,11 +17,14 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "$@playwright/test",
+    "@playwright/test": "^1.49.0",
     "@types/node": "^26.4.1",
     "allure": "^3.14.3",
     "allure-playwright": "^3.10.2",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@playwright/test": "$@playwright/test"
   },
   "dependencies": {
     "exceljs": "^4.4.0"
