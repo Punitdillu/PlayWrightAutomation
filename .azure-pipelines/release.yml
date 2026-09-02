@@ -1,0 +1,104 @@
+trigger: none
+
+parameters:
+
+- name: categories
+  displayName: 'Test Categories'
+  type: object
+  default:
+    - SMOKE
+    - WEB
+    - API
+    - CLIENT
+
+stages:
+
+- stage: AutomatedTests
+
+  displayName: 'Playwright Parallel Tests'
+
+  jobs:
+
+  - job: PlaywrightTests
+
+    displayName: 'Playwright Tests'
+
+    pool:
+      vmImage: 'windows-latest'
+
+    strategy:
+
+      maxParallel: 4
+
+      matrix:
+
+        SMOKE:
+          TEST_CATEGORY: '@SMOKE'
+
+        WEB:
+          TEST_CATEGORY: '@WEB'
+
+        API:
+          TEST_CATEGORY: '@API'
+
+        CLIENT:
+          TEST_CATEGORY: '@CLIENT'
+
+    steps:
+
+    - task: NodeTool@0
+      displayName: 'Install Node.js'
+      inputs:
+        versionSpec: '22.x'
+
+    - task: DownloadBuildArtifacts@1
+      displayName: 'Download Build Artifact'
+      inputs:
+        buildType: 'specific'
+        project: '$(System.TeamProject)'
+        pipeline: 'Playwright-Build'
+        buildVersionToDownload: 'latest'
+        downloadType: 'single'
+        artifactName: 'playwright-framework'
+        downloadPath: '$(Pipeline.Workspace)'
+
+    - task: ExtractFiles@1
+      displayName: 'Extract Framework'
+      inputs:
+        archiveFilePatterns: '$(Pipeline.Workspace)/playwright-framework/**/*.zip'
+        destinationFolder: '$(Pipeline.Workspace)/framework'
+        cleanDestinationFolder: true
+
+    - script: |
+        cd "$(Pipeline.Workspace)/framework"
+        npm ci
+      displayName: 'Install dependencies'
+
+    - script: |
+        cd "$(Pipeline.Workspace)/framework"
+        npx playwright install chromium
+      displayName: 'Install Chromium'
+
+    - script: |
+        cd "$(Pipeline.Workspace)/framework"
+        npx playwright test --grep "$(TEST_CATEGORY)"
+      displayName: 'Run $(TEST_CATEGORY) tests'
+      env:
+        CI: 'true'
+        ALLURE_RESULTS_DIR: 'allure-results/$(TEST_CATEGORY)'
+
+    - task: PublishPipelineArtifact@1
+      condition: succeededOrFailed()
+      displayName: 'Publish Playwright Report'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/framework/playwright-report'
+        artifact: 'playwright-report-$(TEST_CATEGORY)'
+        publishLocation: 'pipeline'
+
+    - task: PublishPipelineArtifact@1
+      condition: succeededOrFailed()
+      displayName: 'Publish Allure Results'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/framework/allure-results'
+        artifact: 'allure-results-$(TEST_CATEGORY)'
+        publishLocation: 'pipeline'

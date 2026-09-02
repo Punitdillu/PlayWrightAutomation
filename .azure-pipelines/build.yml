@@ -1,0 +1,50 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  nodeVersion: '22.x'
+
+steps:
+
+- checkout: self
+  clean: true
+  fetchDepth: 1
+
+- task: NodeTool@0
+  displayName: 'Install Node.js'
+  inputs:
+    versionSpec: '$(nodeVersion)'
+
+- script: |
+    npm ci
+  displayName: 'Install NPM dependencies'
+
+- script: |
+    npx tsc --noEmit
+  displayName: 'TypeScript validation'
+
+- script: |
+    npx playwright install chromium
+  displayName: 'Install Playwright Chromium'
+
+- task: ArchiveFiles@2
+  displayName: 'Create framework artifact'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/PlaywrightAutomation.zip'
+    replaceExistingArchive: true
+    verbose: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Playwright framework artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/PlaywrightAutomation.zip'
+    ArtifactName: 'playwright-framework'
+    publishLocation: 'Container'

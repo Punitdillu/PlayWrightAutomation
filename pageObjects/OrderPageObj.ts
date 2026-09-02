@@ -1,24 +1,24 @@
-import { expect, Locator, Page }  from'@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
 export class OrderPageObj {
 
          readonly page: Page;
-readonly orderTab: Locator;
-         constructor(page:Page) {
+         readonly orderTab: Locator;
+         constructor(page: Page) {
                   this.page = page;
                   this.orderTab = page.locator("[routerlink='/dashboard/myorders']");
 
          }
-         getOrder(result:string):Locator {
+         getOrder(result: string): Locator {
                   return this.page.locator("//th[text()='" + result + "']");
          }
 
-         getdeleteProductFromOrderPage(result:string):Locator {
+         getdeleteProductFromOrderPage(result: string): Locator {
                   return this.page.locator("//th[text()='" + result + "']/following-sibling::td/child::button[text()='Delete']");
          }
 
 
-         async movetoOrderPageValidateTheOrderPresent(result:string) {
+         async movetoOrderPageValidateTheOrderPresent(result: string) {
                   // click on ordr tab
                   await this.orderTab.first().click();
                   try {
@@ -33,7 +33,7 @@ readonly orderTab: Locator;
 
 
 
-         async validateTheOrderDeleted(result:string) {
+         async validateTheOrderDeleted(result: string) {
 
                   await this.getdeleteProductFromOrderPage(result).click();
                   await this.page.waitForTimeout(5000); // Wait for 5 seconds

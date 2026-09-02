@@ -1,6 +1,6 @@
 import { test, expect, Locator, Page, Browser, BrowserContext } from '@playwright/test';
 
-test("Browser context playwright test", async ({ page }: { page: Page }) => {
+test("@WEB Browser context playwright test", async ({ page }: { page: Page }) => {
     const UserName: Locator = page.locator("input[id='username']");
     const Password: Locator = page.locator("input[id='password']");
     const SignBtn: Locator = page.locator("#signInBtn");
@@ -58,7 +58,7 @@ test("Page playwright test", async ({ page }: { page: Page }) => {
     await expect(page).toHaveTitle("Google");
 });
 
-test("ChildWindow Handling", async ({ browser }: { browser: Browser }) => {
+test("@SMOKE ChildWindow Handling", async ({ browser }: { browser: Browser }) => {
     const context: BrowserContext = await browser.newContext();
     const page: Page = await context.newPage();
     const UserName: Locator = page.locator("input[id='username']");
@@ -97,7 +97,7 @@ test("ChildWindow Handling", async ({ browser }: { browser: Browser }) => {
     await expect(page.locator("[style*='block']")).toContainText("Incorrect");
 });
 
-test('Playwright Special locators', async ({ page }: { page: Page }) => {
+test('@SMOKE Playwright Special locators', async ({ page }: { page: Page }) => {
     await page.goto("https://rahulshettyacademy.com/angularpractice/");
     await page.getByLabel("Check me out if you Love IceCreams!").click();
     await page.getByLabel("Employed").check();
@@ -109,7 +109,7 @@ test('Playwright Special locators', async ({ page }: { page: Page }) => {
     await page.locator("app-card").filter({ hasText: 'Nokia Edge' }).getByRole("button").click();
 });
 
-test("https://eventhub.rahulshettyacademy.com34567", async ({ browser }: { browser: Browser }) => {
+test("@SMOKE https://eventhub.rahulshettyacademy.com34567", async ({ browser }: { browser: Browser }) => {
     const context: BrowserContext = await browser.newContext();
     const page: Page = await context.newPage();
     await page.goto("https://eventhub.rahulshettyacademy.com");
@@ -125,4 +125,27 @@ test("https://eventhub.rahulshettyacademy.com34567", async ({ browser }: { brows
     await page.locator("//a[@href='/admin/events']").nth(0).click();
 
     await page.pause();
+});
+
+test("StorageStateExample", async ({ browser }: { browser: Browser }) => {
+
+    const context:BrowserContext = await browser.newContext();
+    const page: Page = await context.newPage();
+    // const page2: Page = await context.newPage();
+    // await page1.goto("https://eventhub.rahulshettyacademy.com");
+    // await page2.goto("https://rahulshettyacademy.com/angularpractice/");
+    // await page1.close();
+    // await page2.close();
+
+    const popupPromise =  page.waitForEvent('popup');
+
+    await page.getByRole('link', { name: 'Open Details' }).click();
+
+    const popup = await popupPromise;
+
+    await popup.waitForLoadState();
+
+    console.log(await popup.title());
+
+
 });

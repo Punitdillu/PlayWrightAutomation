@@ -1,4 +1,7 @@
-import { test, expect, FrameLocator, Dialog, Page } from '@playwright/test';
+import { test, expect, FrameLocator, Dialog, Page, chromium, Browser, BrowserContext } from '@playwright/test';
+
+
+
 
 test("ElementIsHiddenOrVisible", async ({ page }: { page: Page }) => {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
@@ -22,7 +25,16 @@ test("ElementIsHiddenOrVisible", async ({ page }: { page: Page }) => {
     console.log(subscriber ? subscriber.trim() : '');
 });
 
+
+
+
 test("Take Screenshot and visual Validation", async ({ page }: { page: Page }) => {
+// test("Take Screenshot and visual Validation", async () => {
+
+    // const browser: Browser = await chromium.launch();
+    // const context : BrowserContext  = await browser.newContext();
+    // const page: Page = await context.newPage();
+
     const currentTime: string = new Date()
         .toLocaleTimeString('en-GB', { hour12: false })
         .replace(/:/g, '-');
@@ -43,3 +55,4 @@ test("Take Screenshot and visual Validation", async ({ page }: { page: Page }) =
     
     await expect(page.getByPlaceholder("Hide/Show Example")).toBeHidden();
 });
+
