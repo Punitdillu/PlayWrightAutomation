@@ -36,7 +36,6 @@ for (const data of testdataJasonArr)
          test("AddProductToCart' " + data.desiredProduct + " '", async () => 
          {
 
-
                   await loginObj.landToLoginPage();
                   await loginObj.logInToApp(data.userName, data.password);
 
