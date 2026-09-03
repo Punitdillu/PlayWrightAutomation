@@ -1,10 +1,13 @@
 import { defineConfig } from '@playwright/test';
 
-export default defineConfig({
+// Evaluates to true in Azure DevOps (TF_BUILD) or standard CI environments (CI)
+const isCI = !!(process.env.CI || process.env.TF_BUILD);
 
+export default defineConfig({
     testDir: './tests',
 
-    retries: process.env.CI ? 1 : 0,
+    // 1 retry on Azure DevOps/CI, 0 retries on local runs
+    retries: isCI ? 1 : 0,
 
     timeout: 60 * 1000,
 
@@ -14,7 +17,8 @@ export default defineConfig({
 
     fullyParallel: false,
 
-    workers: process.env.CI ? 2 : 4,
+    // 2 workers on Azure DevOps/CI to avoid agent CPU throttling, 4 workers locally
+    workers: isCI ? 2 : 4,
 
     reporter: [
         ['line'],
@@ -22,30 +26,29 @@ export default defineConfig({
         [
             'allure-playwright',
             {
-                resultsDir: process.env.ALLURE_RESULTS_DIR || 'allure-results'
+                resultsDir: process.env.ALLURE_RESULTS_DIR || 'allure-results',
+            detail: true,
+            // Explicitly attach screenshots and videos to Allure
+            suiteTitle: true
             }
         ]
     ],
 
     use: {
-
         browserName: 'chromium',
 
-        headless: process.env.CI ? true : false,
+        // Headless on Azure DevOps/CI, headed on local machine
+        headless: isCI,
 
         screenshot: 'only-on-failure',
-
         video: 'retain-on-failure',
-
         trace: 'on-first-retry',
-
-        viewport: null,
-
+        // Setting a fixed viewport ensures video recordings match standard dimensions
+        viewport: { width: 1280, height: 720 },
         actionTimeout: 10 * 1000,
 
         launchOptions: {
             args: [
-                '--start-maximized',
                 '--disable-save-password-bubble',
                 '--disable-single-click-autofill',
                 '--password-store=basic'

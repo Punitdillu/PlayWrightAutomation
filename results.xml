@@ -1,0 +1,17 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="31.743443">
+<testsuite name="ClientAppPO.spec.ts" timestamp="2026-09-03T07:40:59.238Z" hostname="" tests="1" failures="0" skipped="0" time="30.183" errors="0">
+<testcase name="@WEB AddProductToCart2345" classname="ClientAppPO.spec.ts" time="30.183">
+<system-out>
+<![CDATA[[
+  [32m'ADIDAS ORIGINAL$ 11500 View Add To Cart'[39m,
+  [32m'ZARA COAT 3$ 11500 View Add To Cart'[39m,
+  [32m'iphone 13 pro$ 55000 View Add To Cart'[39m
+]
+result6a99249ce7cd69710fbb5857result
+Ordered Item is under Order Page
+Ordered Item is not under Order Page
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
