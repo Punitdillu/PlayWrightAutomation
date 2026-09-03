@@ -15,7 +15,7 @@ export default defineConfig({
         timeout: 8 * 1000,
     },
 
-    fullyParallel: false,
+    fullyParallel: true,
 
     // 2 workers on Azure DevOps/CI to avoid agent CPU throttling, 4 workers locally
     workers: isCI ? 2 : 4,
