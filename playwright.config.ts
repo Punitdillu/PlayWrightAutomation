@@ -22,14 +22,18 @@ export default defineConfig({
 
     reporter: [
         ['line'],
-        ['junit', { outputFile: 'results.xml' }],
+        ['junit', {
+            outputFile: 'results.xml',
+            // Ensures timestamps are tracked per suite/test
+            embedAnnotationsAsProperties: true
+        }],
         [
             'allure-playwright',
             {
                 resultsDir: process.env.ALLURE_RESULTS_DIR || 'allure-results',
-            detail: true,
-            // Explicitly attach screenshots and videos to Allure
-            suiteTitle: true
+                detail: true,
+                // Explicitly attach screenshots and videos to Allure
+                suiteTitle: true
             }
         ]
     ],
