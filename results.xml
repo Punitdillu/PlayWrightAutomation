@@ -1,17 +1,31 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="31.743443">
-<testsuite name="ClientAppPO.spec.ts" timestamp="2026-09-03T07:40:59.238Z" hostname="" tests="1" failures="0" skipped="0" time="30.183" errors="0">
-<testcase name="@WEB AddProductToCart2345" classname="ClientAppPO.spec.ts" time="30.183">
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="2.62425">
+<testsuite name="ApiCases\CreateRequest.spec.ts" timestamp="2026-09-07T14:59:11.015Z" hostname="" tests="1" failures="1" skipped="0" time="1.556" errors="0">
+<testcase name="Returns a paginated list of events" classname="ApiCases\CreateRequest.spec.ts" time="1.556">
 <system-out>
-<![CDATA[[
-  [32m'ADIDAS ORIGINAL$ 11500 View Add To Cart'[39m,
-  [32m'ZARA COAT 3$ 11500 View Add To Cart'[39m,
-  [32m'iphone 13 pro$ 55000 View Add To Cart'[39m
-]
-result6a99249ce7cd69710fbb5857result
-Ordered Item is under Order Page
-Ordered Item is not under Order Page
+<![CDATA[
+[[ATTACHMENT|test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md]]
 ]]>
 </system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  ApiCases\CreateRequest.spec.ts:59:5 › Returns a paginated list of events ─────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 401
+
+      65 |          );
+      66 |          const responseBody = await response.json();
+    > 67 |          expect(response.status()).toBe(200);
+         |                                    ^
+      68 |
+      69 |          console.log(responseBody);
+      70 |
+        at C:\Users\dillu\PlayWrightAutomation\tests\ApiCases\CreateRequest.spec.ts:67:36
+
+    Error Context: ..\test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md
+]]>
+</failure>
 </testcase>
 </testsuite>
 </testsuites>

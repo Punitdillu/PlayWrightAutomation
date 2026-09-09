@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 
+const baseUrl = 'https://api.eventhub.rahulshettyacademy.com/api/';
 
 test("@Api Create Request ", async ({ request }) => {
 
@@ -9,7 +10,7 @@ test("@Api Create Request ", async ({ request }) => {
                   "email": email,
                   "password": "secret123",
          };
-         const baseUrl = 'https://api.eventhub.rahulshettyacademy.com/api/';
+         
 
          // Create Post Request and generate token 
 
@@ -53,3 +54,20 @@ test("@Api Create Request ", async ({ request }) => {
 
 }
 );
+
+
+test("Returns a paginated list of events", async({request})=>
+{
+         const response = await request.get(baseUrl +'events',{
+                  headers: {
+                           'Accept': 'application/json',
+                  },}
+         );
+         const responseBody = await response.json();
+         expect(response.status()).toBe(200);
+
+         console.log(responseBody);
+
+
+
+})
