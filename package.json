@@ -4,23 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "regressionCases": "playwright test",
-    "WebCases": "npx playwright test -g @WEB",
-    "SmokeCases": "npx playwright test -g @SMOKE",
+    "test:cucumber": "cucumber-js",
+    "test:cucumber:web": "cucumber-js --tags \"@WEB\"",
     "allure:generate": "allure generate ./allure-results -o ./allure-report --clean",
     "allure:open": "allure open ./allure-report",
     "allure:serve": "allure serve ./allure-results",
-    "test:report": "playwright test && allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report"
+    "cucumber:report": "cucumber-js || npm run allure:serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
     "@playwright/test": "^1.49.0",
-    "@types/node": "^26.4.1",
+    "@types/node": "^26.5.1",
     "allure-commandline": "^2.43.0",
+    "allure-cucumberjs": "^3.12.1",
     "allure-playwright": "^3.10.2",
+    "playwright": "^1.63.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "overrides": {
