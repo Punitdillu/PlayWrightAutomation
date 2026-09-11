@@ -12,6 +12,7 @@ export let page: Page;
 BeforeAll(async function () {
   browser = await chromium.launch({
     headless: true,
+    channel: 'chromium', // Forces standard Chromium instead of headless-shell
     //args: ['--start-maximized'],
   });
 });
