@@ -1,31 +1,23 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="2.62425">
-<testsuite name="ApiCases\CreateRequest.spec.ts" timestamp="2026-09-07T14:59:11.015Z" hostname="" tests="1" failures="1" skipped="0" time="1.556" errors="0">
-<testcase name="Returns a paginated list of events" classname="ApiCases\CreateRequest.spec.ts" time="1.556">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  ApiCases\CreateRequest.spec.ts:59:5 › Returns a paginated list of events ─────────────────────────
-
-    Error: expect(received).toBe(expected) // Object.is equality
-
-    Expected: 200
-    Received: 401
-
-      65 |          );
-      66 |          const responseBody = await response.json();
-    > 67 |          expect(response.status()).toBe(200);
-         |                                    ^
-      68 |
-      69 |          console.log(responseBody);
-      70 |
-        at C:\Users\dillu\PlayWrightAutomation\tests\ApiCases\CreateRequest.spec.ts:67:36
-
-    Error Context: ..\test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md
-]]>
-</failure>
-</testcase>
+<?xml version="1.0"?>
+<testsuite name="Cucumber" time="38.883" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-11T01:06:20.484Z">
+  <testcase classname="End-to-End Product Purchase and Order Lifecycle" name="Add product to cart and verify order workflow with static dataset" time="19.134">
+    <system-out><![CDATA[Given user is on the login page.............................................passed
+When user logs in with credentials from JSON data...........................passed
+And user adds product to cart from JSON data................................passed
+And user navigates to cart and proceeds to checkout.........................passed
+And user completes payment using JSON payment details.......................passed
+Then order confirmation message should be displayed and order ID generated..passed
+And the placed order should be verified in the orders history page..........passed
+And user cancels the order and verifies it is deleted.......................passed]]></system-out>
+  </testcase>
+  <testcase classname="End-to-End Product Purchase and Order Lifecycle" name="Add product2 to cart and verify order workflow with static dataset" time="18.783">
+    <system-out><![CDATA[Given user is on the login page.............................................passed
+When user logs in with credentials from JSON data...........................passed
+And user adds product to cart from JSON data................................passed
+And user navigates to cart and proceeds to checkout.........................passed
+And user completes payment using JSON payment details.......................passed
+Then order confirmation message should be displayed and order ID generated..passed
+And the placed order should be verified in the orders history page..........passed
+And user cancels the order and verifies it is deleted.......................passed]]></system-out>
+  </testcase>
 </testsuite>
-</testsuites>

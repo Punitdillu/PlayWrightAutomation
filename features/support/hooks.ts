@@ -12,7 +12,7 @@ export let page: Page;
 BeforeAll(async function () {
   browser = await chromium.launch({
     headless: true,
-    channel: 'chromium', // Forces standard Chromium instead of headless-shell
+    channel: 'chrome', // Forces standard Chromium instead of headless-shell
     //args: ['--start-maximized'],
   });
 });
@@ -41,7 +41,12 @@ Before(async function ()
 
 After(async function ({ result, pickle }) {
   const sanitizedScenarioName = pickle.name.replace(/[^a-zA-Z0-9]/g, '_');
-  const tracePath = path.join('test-results/traces', `${sanitizedScenarioName}-trace.zip`);
+  const traceDir = 'test-results/traces';
+if (!fs.existsSync(traceDir)) {
+  fs.mkdirSync(traceDir, { recursive: true });
+}
+const tracePath = path.join(traceDir, `${sanitizedScenarioName}-trace.zip`);
+  
 
   if (result?.status === Status.FAILED) {
     // A. Attach Screenshot on Failure
