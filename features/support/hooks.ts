@@ -11,7 +11,7 @@ export let page: Page;
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: false,
+    headless: true,
     //args: ['--start-maximized'],
   });
 });
