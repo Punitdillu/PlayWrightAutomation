@@ -11,8 +11,8 @@ export let page: Page;
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: true,
-    args: ['--start-maximized'],
+    headless: false,
+    //args: ['--start-maximized'],
   });
 });
 
@@ -20,7 +20,7 @@ Before(async function ()
 {
   // 1. Configure context with Video recording enabled
   context = await browser.newContext({
-    viewport: null,
+    viewport: { width: 1920, height: 1080 },
     recordVideo: {
       dir: 'test-results/videos/',
       size: { width: 1280, height: 720 },

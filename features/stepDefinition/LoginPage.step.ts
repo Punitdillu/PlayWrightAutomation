@@ -53,7 +53,7 @@ Then('order confirmation message should be displayed and order ID generated', as
 });
 
 Then('the placed order should be verified in the orders history page', async function () {
-  //await orderpageObj.movetoOrderPageValidateTheOrderPresent(orderId);
+  await orderpageObj.movetoOrderPageValidateTheOrderPresent(orderId);
 });
 
 Then('user cancels the order and verifies it is deleted', async function () {
