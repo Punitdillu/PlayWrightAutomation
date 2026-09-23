@@ -1,5 +1,5 @@
 import { test, expect, request, APIRequestContext, Locator, Page } from '@playwright/test';
-import { ApiUtils } from '../utils/ApiUtils';
+import { ApiUtils } from '../../utils/ApiUtils';
 
 // Define types for payloads and API response
 interface LoginPayload {

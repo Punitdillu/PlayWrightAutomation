@@ -71,3 +71,23 @@ test("Returns a paginated list of events", async({request})=>
 
 
 })
+
+
+interface user{
+
+         name: "Punit Ranjan";
+         email: "punit@mailinator.com";
+         job: "Sdet";
+         salary: 1000000;
+
+}
+
+type salary = Pick<user, "salary">;
+type alldetails = Required<user>;
+type optionalDetails = Partial<user>;
+type detailsExceptEmail = Omit<user, "email">;
+
+
+function getSalary<T extends{length : number}>(val: T): number {
+    return val.length;
+}

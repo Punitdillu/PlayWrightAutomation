@@ -2,7 +2,7 @@ import { Locator, Page } from "@playwright/test";
 
 export class DashBoardObj {
 
-         readonly page: Page;
+         private readonly page: Page;
          readonly AllProductAtPage: Locator;
          readonly CartBtn: Locator;
 

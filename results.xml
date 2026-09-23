@@ -1,31 +1,43 @@
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="2.62425">
-<testsuite name="ApiCases\CreateRequest.spec.ts" timestamp="2026-09-07T14:59:11.015Z" hostname="" tests="1" failures="1" skipped="0" time="1.556" errors="0">
-<testcase name="Returns a paginated list of events" classname="ApiCases\CreateRequest.spec.ts" time="1.556">
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="127.86803900000001">
+<testsuite name="ClientAppPO.spec.ts" timestamp="2026-09-23T11:06:02.775Z" hostname="" tests="3" failures="0" skipped="0" time="121.998" errors="0">
+<testcase name="AddProductToCart&apos; ZARA COAT 3 &apos;" classname="ClientAppPO.spec.ts" time="44.339">
 <system-out>
-<![CDATA[
-[[ATTACHMENT|test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md]]
+<![CDATA[[
+  [32m'ADIDAS ORIGINAL$ 11500 View Add To Cart'[39m,
+  [32m'ZARA COAT 3$ 11500 View Add To Cart'[39m,
+  [32m'iphone 13 pro$ 55000 View Add To Cart'[39m
+]
+result6ab3b2be2be7a4bc2b6609aeresult
+Ordered Item is under Order Page
+Ordered Item is not under Order Page
 ]]>
 </system-out>
-<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
-<![CDATA[  ApiCases\CreateRequest.spec.ts:59:5 › Returns a paginated list of events ─────────────────────────
-
-    Error: expect(received).toBe(expected) // Object.is equality
-
-    Expected: 200
-    Received: 401
-
-      65 |          );
-      66 |          const responseBody = await response.json();
-    > 67 |          expect(response.status()).toBe(200);
-         |                                    ^
-      68 |
-      69 |          console.log(responseBody);
-      70 |
-        at C:\Users\dillu\PlayWrightAutomation\tests\ApiCases\CreateRequest.spec.ts:67:36
-
-    Error Context: ..\test-results\ApiCases-CreateRequest-Returns-a-paginated-list-of-events\error-context.md
+</testcase>
+<testcase name="AddProductToCart&apos; ADIDAS ORIGINAL &apos;" classname="ClientAppPO.spec.ts" time="23.546">
+<system-out>
+<![CDATA[[
+  [32m'ADIDAS ORIGINAL$ 11500 View Add To Cart'[39m,
+  [32m'ZARA COAT 3$ 11500 View Add To Cart'[39m,
+  [32m'iphone 13 pro$ 55000 View Add To Cart'[39m
+]
+result6ab3b2d52be7a4bc2b6609ffresult
+Ordered Item is under Order Page
+Ordered Item is not under Order Page
 ]]>
-</failure>
+</system-out>
+</testcase>
+<testcase name="@WEB AddProductToCart2345" classname="ClientAppPO.spec.ts" time="54.113">
+<system-out>
+<![CDATA[[
+  [32m'ADIDAS ORIGINAL$ 11500 View Add To Cart'[39m,
+  [32m'ZARA COAT 3$ 11500 View Add To Cart'[39m,
+  [32m'iphone 13 pro$ 55000 View Add To Cart'[39m
+]
+result6ab3b30c2be7a4bc2b660a57result
+Ordered Item is under Order Page
+Ordered Item is not under Order Page
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

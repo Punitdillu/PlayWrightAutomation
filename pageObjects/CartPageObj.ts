@@ -12,7 +12,7 @@ export class CartPageObj {
          readonly PlaceOrderBtn: Locator;
          
 
-         constructor(page: any) {
+         constructor(page: Page) {
                   this.page = page;
                   this.checkoutBtn = page.getByText("Checkout");
                   this.SelectCountryField = page.locator("[placeholder='Select Country']");

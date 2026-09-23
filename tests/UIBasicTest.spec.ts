@@ -1,6 +1,6 @@
 import { test, expect, Locator, Page, Browser, BrowserContext } from '@playwright/test';
 
-test("@WEB Browser context playwright test", async ({ page }: { page: Page }) => {
+test("@WEB @RunParallel Browser context playwright test", async ({ page }: { page: Page }) => {
     const UserName: Locator = page.locator("input[id='username']");
     const Password: Locator = page.locator("input[id='password']");
     const SignBtn: Locator = page.locator("#signInBtn");

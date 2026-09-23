@@ -16,7 +16,7 @@ test("LoginTestCase", async ({ page }: { page: Page }) => {
          console.log(await AllProductAtPage.allTextContents());
 });
 
-test("AddProductToCart", async ({ page }: { page: Page }) => {
+test("@RunParallel AddProductToCart", async ({ page }: { page: Page }) => {
          const desiredProduct: string = "ZARA COAT 3";
 
          const UserName: Locator = page.locator("#userEmail");
