@@ -9,11 +9,13 @@ export class OrderPageObj {
                   this.orderTab = page.locator("[routerlink='/dashboard/myorders']");
 
          }
-         getOrder(result: string): Locator {
+         getOrder(result: string): Locator 
+         {
                   return this.page.locator("//th[text()='" + result + "']");
          }
 
-         getdeleteProductFromOrderPage(result: string): Locator {
+         getdeleteProductFromOrderPage(result: string): Locator 
+         {
                   return this.page.locator("//th[text()='" + result + "']/following-sibling::td/child::button[text()='Delete']");
          }
 

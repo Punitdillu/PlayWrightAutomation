@@ -4,6 +4,7 @@ import { defineConfig } from '@playwright/test';
 const isCI = !!(process.env.CI || process.env.TF_BUILD);
 
 export default defineConfig({
+    
     testDir: './tests',
 
     // 1 retry on Azure DevOps/CI, 0 retries on local runs
@@ -18,7 +19,7 @@ export default defineConfig({
     fullyParallel: false,
 
     // 2 workers on Azure DevOps/CI to avoid agent CPU throttling, 4 workers locally
-    workers: isCI ? 1 : 4,
+    workers: isCI ? 4 : 4,
 
     reporter: [
         ['line'],

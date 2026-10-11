@@ -5,8 +5,8 @@ const baseUrl = 'https://api.eventhub.rahulshettyacademy.com/api/';
 test("@Api Create Request ", async ({ request }) => {
 
          const randomNumber = Math.random();
-         const email = randomNumber + "punitranjan@email.com";
-         const userData = {
+         const email : String = randomNumber + "punitranjan@email.com";
+         const userData: Object = {
                   "email": email,
                   "password": "secret123",
          };

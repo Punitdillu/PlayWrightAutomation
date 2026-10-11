@@ -3,7 +3,7 @@ import { Locator, Page } from "@playwright/test";
 export class CartPageObj {
 
          readonly page: Page;
-         readonly checkoutBtn: Locator;
+         private readonly checkoutBtn: Locator;
          readonly SelectCountryField: Locator;
 
          readonly CreditCardNumber: Locator;
